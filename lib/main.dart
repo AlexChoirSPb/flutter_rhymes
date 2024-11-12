@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rhymes/features/home/home.dart';
+import 'package:flutter_rhymes/router/router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const RhymerApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class RhymerApp extends StatefulWidget {
+  const RhymerApp({super.key});
+
+  @override
+  State<RhymerApp> createState() => _RhymerAppState();
+}
+
+class _RhymerAppState extends State<RhymerApp> {
+  final _router = AppRouter();
 
   @override
   Widget build(BuildContext context) {
     const primaryColor = Color(0xFFF82B10);
 
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'Rhymer',
       theme: ThemeData(
         primaryColor: primaryColor,
         colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
         useMaterial3: true,
         scaffoldBackgroundColor: const Color(0xFFEFF1F3),
       ),
-      home: const HomeScreen(),
+      routerConfig: _router.config(),
     );
   }
 }
