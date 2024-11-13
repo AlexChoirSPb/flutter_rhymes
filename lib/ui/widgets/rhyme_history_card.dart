@@ -12,6 +12,7 @@ class RhymeHistoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final String text = rhymes.join(',  ');
 
     return BaseCard(
       padding: const EdgeInsets.all(16),
@@ -25,14 +26,15 @@ class RhymeHistoryCard extends StatelessWidget {
             style: theme.textTheme.bodyLarge
                 ?.copyWith(fontWeight: FontWeight.w700),
           ),
-          Wrap(
-            children: rhymes
-                .map((e) => Padding(
-                      padding: const EdgeInsets.only(right: 4),
-                      child: Text(e),
-                    ))
-                .toList(),
-          )
+          Text(
+            text,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w800,
+                color: theme.hintColor.withOpacity(0.4),
+                fontSize: 13),
+          ),
         ],
       ),
     );
