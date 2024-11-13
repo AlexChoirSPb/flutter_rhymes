@@ -26,56 +26,7 @@ class SearchScreen extends StatelessWidget {
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(70),
             child: SearchButton(
-              onTap: () {
-                showModalBottomSheet(
-                  backgroundColor: Colors.transparent,
-                  isScrollControlled: true,
-                  elevation: 0,
-                  context: context,
-                  builder: (context) => Padding(
-                    padding: const EdgeInsets.only(top: 60),
-                    child: BaseBottomSheet(
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: theme.hintColor.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: const TextField(
-                                decoration: InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  contentPadding:
-                                      EdgeInsets.symmetric(horizontal: 12),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: theme.primaryColor,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            height: 48,
-                            width: 48,
-                            child: const Icon(
-                              Icons.search_rounded,
-                              color: Colors.white,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              },
+              onTap: () => _showSearchBottomSheet(context),
             ),
           ),
         ),
@@ -114,33 +65,16 @@ class SearchScreen extends StatelessWidget {
       ],
     );
   }
-}
 
-class BaseBottomSheet extends StatelessWidget {
-  const BaseBottomSheet({
-    super.key,
-    required this.child,
-  });
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Theme.of(context).canvasColor,
-        borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
-      ),
-      child: Column(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            child: child,
-          ),
-        ],
+  Future<dynamic> _showSearchBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      elevation: 0,
+      context: context,
+      builder: (context) => const Padding(
+        padding: EdgeInsets.only(top: 60),
+        child: SearchRhymesBottomSheet(),
       ),
     );
   }
