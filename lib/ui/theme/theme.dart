@@ -5,10 +5,12 @@ final themeData = ThemeData(
   primaryColor: primaryColor,
   colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
   textTheme: const TextTheme(
-      titleMedium: TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w600,
-  )),
+    titleMedium: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+    ),
+  ),
+  dividerTheme: DividerThemeData(color: Colors.grey.withOpacity(0.1)),
   useMaterial3: true,
   scaffoldBackgroundColor: const Color(0xFFEFF1F3),
 );
