@@ -3,16 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rhymes/router/router.dart';
 
 @RoutePage()
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
   });
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -59,8 +54,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _openPage(int index, TabsRouter tabsRouter) {
-    setState(() {
-      tabsRouter.setActiveIndex(index);
-    });
+    tabsRouter.setActiveIndex(index);
   }
 }
